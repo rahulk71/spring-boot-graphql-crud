@@ -1,0 +1,48 @@
+# ==================== Types ====================
+
+type Product {
+    id: ID!
+    name: String!
+    description: String
+    price: Float!
+    quantity: Int!
+}
+
+# ==================== Inputs ====================
+
+input ProductInput {
+    name: String!
+    description: String
+    price: Float!
+    quantity: Int!
+}
+
+input ProductUpdateInput {
+    name: String
+    description: String
+    price: Float
+    quantity: Int
+}
+
+# ==================== Queries (GET) ====================
+
+type Query {
+    # Get all products
+    getAllProducts: [Product!]!
+
+    # Get product by ID
+    getProductById(id: ID!): Product
+}
+
+# ==================== Mutations (CREATE / UPDATE / DELETE) ====================
+
+type Mutation {
+    # Create a new product
+    createProduct(input: ProductInput!): Product!
+
+    # Update an existing product
+    updateProduct(id: ID!, input: ProductUpdateInput!): Product
+
+    # Delete a product
+    deleteProduct(id: ID!): Boolean!
+}
